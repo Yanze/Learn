@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<script src="jquery-1.11.2.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+  <script src="site.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <title>GitHub image grabber</title>
+</head>
+<body>
+<div class="container">
+  <div class="well">
+    <h1> Github Image Grabber</h1>
+    <input id="github_username" type="text"
+        placeholder="Enter Github Username..">
+    <button class="btn btn-default" id="github_search">Search</button>
+    </div>
+    </div>
+
+
+<div id="found" class="container">
+  <div class="well picSection col-lg-12">
+    <div class="col-lg-3">
+    <img id="github_image" src="" alt="" height="200" width="200">
+    </div>
+    <form class="form" role="form">
+    <div class="form-group col-lg-3">
+    <label>Name:</label>
+    <label id="github_name"></label>
+    </div>
+
+     <div class="form-group col-lg-3">
+     <label>Location:</label>
+     <label id="github_location" ></label>
+    </div>
+
+     <div id="company" class="form-group col-lg-3">
+     <label>Company:</label>
+    <label id="github_company" ></label>
+    </div>
+
+    <div class="form-group col-lg-6">
+    <label>Projects:</label>
+      <label id="projects"></label>
+    </div>
+    </form>
+  </div>
+  </div>
+
+  <div id="notFound" class="container">
+  <p>User not found</p>
+  </div>
+</body>
+</html>
