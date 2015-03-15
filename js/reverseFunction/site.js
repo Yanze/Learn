@@ -6,6 +6,7 @@ function reverseArray(monArray){
 };
 console.log(reverseArray(["a", "b", "c"]));
 
+
 function reverseArrayInPlace(arrayValue){
     return arrayValue.reverse();
 }
