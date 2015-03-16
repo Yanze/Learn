@@ -1,0 +1,15 @@
+
+table tr td{
+  border: 3px solid #afafaf;
+  padding: 40px 60px 40px 60px;
+  font-weight: bold;
+  font-size: x-large;
+  text-align: center;
+}
+input{
+  margin-bottom: 10px;
+  margin-right: 50px;
+  padding: 20px;
+  font-size: x-large;
+
+}
