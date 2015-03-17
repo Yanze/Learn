@@ -50,6 +50,16 @@
        calculator.needClear = true;
      });
 
+      $("#factorial").on("click", function(){
+        calculator.first = $("#input").val();
+        var res = 1;
+        for(i = calculator.first; i > 0 ; i--){
+          res *= i;
+        }
+        $("#input").val(res);
+      });
+
+
       $("#equal").on("click",function(){
         var res;
         calculator.second = $("#input").val();
@@ -68,6 +78,7 @@
        }
        $("#input").val(res);
      });
+
 
 
     });
