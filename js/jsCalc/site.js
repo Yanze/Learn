@@ -1,75 +1,77 @@
-  var first;
-  var second;
-  var needClear = false;
-  var operators;
+  var calculator = {
+    first:"",
+    second:"",
+    needClear: false,
+    operators:"",
+    applyRules:function(inputValue,pressedValue){
+        //reset input value
+        if(inputValue == "0"){
+          inputValue = "";
+        }
+
+        // use only once dot
+        var res;
+        if(inputValue.indexOf(".") != -1 && pressedValue == "."){
+          res = inputValue;
+        }
+        else{
+          res = inputValue + pressedValue;
+        }
 
 
-  $(document).ready(function(){
+        if(calculator.needClear){
+          calculator.needClear = false;
+          res = pressedValue;
+        }
 
-    $(".numbers").on("click", function(){
-      var pressedValue = $(this).text();
-      var inputValue = $("#input").val();
-      var res = applyRules(inputValue,pressedValue);
-      $("#input").val(res);
-    });
+        return res;
 
-    $("#AC").on("click", function(){
-      $("#input").val("0")
-    });
+      }
+
+    };
+
+    $(document).ready(function(){
+
+      $(".numbers").on("click", function(){
+        var pressedValue = $(this).text();
+        var inputValue = $("#input").val();
+        var res = calculator.applyRules(inputValue,pressedValue);
+        $("#input").val(res);
+      });
+
+      $("#AC").on("click", function(){
+        $("#input").val("0")
+      });
 
 
-    $(".operator").on("click",function(){
-     operators = $(this).text();
-     first = $("#input").val();
-     needClear = true;
-   });
+      $(".operator").on("click",function(){
+       calculator.operators = $(this).text();
+       calculator.first = $("#input").val();
+       calculator.needClear = true;
+     });
 
-    $("#equal").on("click",function(){
-      var res;
-     second = $("#input").val();
+      $("#equal").on("click",function(){
+        var res;
+        calculator.second = $("#input").val();
        //operators
-       if(operators == "+"){
-         res = Number(first) + Number(second);
+       if(calculator.operators == "+"){
+         res = Number(calculator.first) + Number(calculator.second);
        }
-       else if(operators == "-"){
-         res = Number(first) - Number(second);
+       else if(calculator.operators == "-"){
+         res = Number(calculator.first) - Number(calculator.second);
        }
-       else if(operators == "*"){
-         res = Number(first) * Number(second);
+       else if(calculator.operators == "*"){
+         res = Number(calculator.first) * Number(calculator.second);
        }
-       else if(operators == "/"){
-         res = Number(first) / Number(second);
+       else if(calculator.operators == "/"){
+         res = Number(calculator.first) / Number(calculator.second);
        }
        $("#input").val(res);
      });
 
 
-  });
+    });
 
-  function applyRules(inputValue,pressedValue){
-    //reset input value
-    if(inputValue == "0"){
-      inputValue = "";
-    }
-
-  // use only once dot
-  var res;
-  if(inputValue.indexOf(".") != -1 && pressedValue == "."){
-    res = inputValue;
-  }
-  else{
-    res = inputValue + pressedValue;
-  }
-
-
-  if(needClear){
-    needClear = false;
-    res = pressedValue;
-  }
-
-  return res;
-
-};
 
 
 
