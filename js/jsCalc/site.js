@@ -1,7 +1,7 @@
   var first;
   var second;
   var needClear = false;
-
+  var operators;
 
 
   $(document).ready(function(){
@@ -18,16 +18,30 @@
     });
 
 
-    $("#plus").on("click",function(){
+    $(".operator").on("click",function(){
+     operators = $(this).text();
      first = $("#input").val();
      needClear = true;
    });
 
     $("#equal").on("click",function(){
+      var res;
      second = $("#input").val();
-     var res = Number(first) + Number(second);
-     $("#input").val(res);
-   });
+       //operators
+       if(operators == "+"){
+         res = Number(first) + Number(second);
+       }
+       else if(operators == "-"){
+         res = Number(first) - Number(second);
+       }
+       else if(operators == "*"){
+         res = Number(first) * Number(second);
+       }
+       else if(operators == "/"){
+         res = Number(first) / Number(second);
+       }
+       $("#input").val(res);
+     });
 
 
   });
@@ -46,13 +60,24 @@
   else{
     res = inputValue + pressedValue;
   }
-  //
+
+
   if(needClear){
     needClear = false;
-      res = pressedValue;
+    res = pressedValue;
   }
+
   return res;
 
-
-
 };
+
+
+
+
+
+
+
+
+
+
+
