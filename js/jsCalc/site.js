@@ -1,6 +1,6 @@
   var calculator = {
-    first:"",
-    second:"",
+    first:"0",
+    second:"0",
     needClear: false,
     operators:"",
     applyRules:function(inputValue,pressedValue){
@@ -19,69 +19,72 @@
         }
 
 
-        if(calculator.needClear){
-          calculator.needClear = false;
+        if(this.needClear){
+          this.needClear = false;
           res = pressedValue;
         }
 
         return res;
-
-      }
-
-    };
-
-    $(document).ready(function(){
-
-      $(".numbers").on("click", function(){
-        var pressedValue = $(this).text();
-        var inputValue = $("#input").val();
-        var res = calculator.applyRules(inputValue,pressedValue);
-        $("#input").val(res);
-      });
-
-      $("#AC").on("click", function(){
-        $("#input").val("0")
-      });
-
-
-      $(".operator").on("click",function(){
-       calculator.operators = $(this).text();
-       calculator.first = $("#input").val();
-       calculator.needClear = true;
-     });
-
-      $("#factorial").on("click", function(){
-        calculator.first = $("#input").val();
+      },
+      factorial: function(inputData){
         var res = 1;
-        for(i = calculator.first; i > 0 ; i--){
+        for(i = inputData; i > 0 ; i--){
           res *= i;
         }
-        $("#input").val(res);
-      });
-
-
-      $("#equal").on("click",function(){
-        var res;
-        calculator.second = $("#input").val();
-       //operators
-       if(calculator.operators == "+"){
-         res = Number(calculator.first) + Number(calculator.second);
+        return res;
+      },
+      calculate: function(operator){
+        if(this.operators == "+"){
+         res = Number(this.first) + Number(this.second);
        }
-       else if(calculator.operators == "-"){
-         res = Number(calculator.first) - Number(calculator.second);
+       else if(this.operators == "-"){
+         res = Number(this.first) - Number(this.second);
        }
-       else if(calculator.operators == "*"){
-         res = Number(calculator.first) * Number(calculator.second);
+       else if(this.operators == "*"){
+         res = Number(this.first) * Number(this.second);
        }
-       else if(calculator.operators == "/"){
-         res = Number(calculator.first) / Number(calculator.second);
+       else if(this.operators == "/"){
+         res = Number(this.first) / Number(this.second);
        }
-       $("#input").val(res);
-     });
+       return res;
+     }
 
+   };
 
+   $(document).ready(function(){
 
+    $(".numbers").on("click", function(){
+      var pressedValue = $(this).text();
+      var inputValue = $("#input").val();
+      var res = calculator.applyRules(inputValue,pressedValue);
+      $("#input").val(res);
     });
+
+    $("#AC").on("click", function(){
+      $("#input").val("0")
+    });
+
+
+    $(".operator").on("click",function(){
+     calculator.operators = $(this).text();
+     calculator.first = $("#input").val();
+     calculator.needClear = true;
+   });
+
+    $("#factorial").on("click", function(){
+      calculator.first = $("#input").val();
+      var res = calculator.factorial(calculator.first);
+      $("#input").val(res);
+    });
+
+
+    $("#equal").on("click",function(){
+      calculator.second = $("#input").val();
+      var finalAnswer = calculator.calculate();
+      $("#input").val(res);
+    });
+
+  });
 
 
 
