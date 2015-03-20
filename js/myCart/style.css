@@ -1,0 +1,27 @@
+#inputArea{
+margin-right: 10px;
+padding: 5px;
+}
+#uploadedPic img{
+  width:260px;
+  height: 260px;
+}
+#showArea{
+  display: none;
+  border: 2px solid #afafaf;
+  padding: 20px;
+  margin-top: 5px;
+}
+.total label{
+  font-size: 20px;
+
+}
+#FinalTotalPrice{
+  display: none;
+}
+
+#logo{
+   width:100px;
+  height: 100px;
+
+}
