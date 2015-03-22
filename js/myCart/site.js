@@ -1,10 +1,11 @@
 $(document).ready(function(){
 
-    //color picker
+  //color picker
   var dropdownMenu = $("#dropdownMenu");
   var color;
+  var allShowArearValue;
   $("#colorChoosen li a").on("click", function(){
-     color = $(this).text();
+    color = $(this).text();
     dropdownMenu.text(color);
   });
 
@@ -12,10 +13,15 @@ $(document).ready(function(){
   var qty;
   $("#add").on("click", function(event){
     event.preventDefault();
-    $("#showArea").show();
-    $("#FinalTotalPrice").show();
+
+    if(!$("#myForm").valid()){
+      return;
+    }
+
+    $("#showArea").slideDown();
+    $("#FinalTotalPrice").slideDown();
     //show name
-    var inputNameValue = $("#nameInput").val();
+    var inputNameValue = $("#name").val();
     $("#showName").text(inputNameValue);
     //upload image
     var img_url = $("#imgLink").val();
@@ -26,8 +32,6 @@ $(document).ready(function(){
 
     var changeTextColor = $("#dropdownMenu").text();
     var colorResult = changeColor(changeTextColor);
-
-
 
     //price
     price = $("#price").val();
@@ -54,23 +58,35 @@ $(document).ready(function(){
     $("#totalPrice").html("$" + total);
 
   });
+
+  //delete
+  $("#close").on("click", function(){
+    $("#showArea").remove();
+
+  });
+
+  //form validate
+  $("#myForm").validate();
+
 });
 
 function changeColor(color){
 
-    if(color == "Red color"){
-          $("#showArea label").css("color","red");
-      }
-      else if(color == "Orange color"){
-          $("#showArea label").css("color","orange");
-      }
-       else if(color == "Pink color"){
-          $("#showArea label").css("color","pink");
-      }
-       else if(color == "Black color"){
-          $("#showArea label").css("color","black");
-      }
-}
+  if(color == "Red color"){
+    $("#showArea label").css("color","red");
+  }
+  else if(color == "Orange color"){
+    $("#showArea label").css("color","orange");
+  }
+  else if(color == "Pink color"){
+    $("#showArea label").css("color","pink");
+  }
+  else if(color == "Black color"){
+    $("#showArea label").css("color","black");
+  }
+};
+
+
 
 
 
