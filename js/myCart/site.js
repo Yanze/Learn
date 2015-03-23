@@ -1,8 +1,26 @@
+var input = {
+  price:"0",
+  qty:"0",
+  total:"0",
+  changeColor: function(color){
+    if(color == "Red color"){
+      $("#showArea label").css("color","red");
+    }
+    else if(color == "Orange color"){
+      $("#showArea label").css("color","orange");
+    }
+    else if(color == "Pink color"){
+      $("#showArea label").css("color","pink");
+    }
+    else if(color == "Default"){
+      $("#showArea label").css("color","black");
+    }
+  }
+};
+
 
 $(document).ready(function(){
 
-  var price;
-  var qty;
   $("#add").on("click", function(event){
     event.preventDefault();
 
@@ -11,12 +29,12 @@ $(document).ready(function(){
     }
 
       //text color
-    var colorchosed = $('#colorChoosen').val();
-    changeColor(colorchosed);
+      var colorchosed = $('#colorChoosen').val();
+      input.changeColor(colorchosed);
 
 
-    $("#showArea").slideDown();
-    $("#FinalTotalPrice").slideDown();
+      $("#showArea").slideDown();
+      $("#FinalTotalPrice").slideDown();
     //show name
     var inputNameValue = $("#name").val();
     $("#showName").text(inputNameValue);
@@ -28,25 +46,25 @@ $(document).ready(function(){
     $("#showDescription").text(description);
 
     var changeTextColor = $("#dropdownMenu").text();
-    var colorResult = changeColor(changeTextColor);
+    var colorResult = input.changeColor(changeTextColor);
 
     //price
-    price = $("#price").val();
-    $("#showPrice").html("$" + price);
+    input.price = $("#price").val();
+    $("#showPrice").html("$" + input.price);
 
 
     //quantity
-    qty = $("#qty").val();
-    $("#showQty").text(qty);
+    input.qty = $("#qty").val();
+    $("#showQty").text(input.qty);
 
 
     //show total price
-    var total = price * qty;
-    $("#totalPrice").html("$" + total);
+    input.total = input.price * input.qty;
+    $("#totalPrice").html("$" + input.total);
 
     //clear select option fields
     $('#colorChoosen option').prop('selected', function() {
-        return this.defaultSelected;
+      return this.defaultSelected;
     });
 
 
@@ -71,21 +89,6 @@ $(document).ready(function(){
 
 }); // end of the ready function
 
-function changeColor(color){
-
-  if(color == "Red color"){
-    $("#showArea label").css("color","red");
-  }
-  else if(color == "Orange color"){
-    $("#showArea label").css("color","orange");
-  }
-  else if(color == "Pink color"){
-    $("#showArea label").css("color","pink");
-  }
-  else if(color == "Default"){
-    $("#showArea label").css("color","black");
-  }
-};
 
 
 
