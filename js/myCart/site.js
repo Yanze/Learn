@@ -40,7 +40,10 @@ $(document).ready(function(){
     $("#showName").text(inputNameValue);
     //upload image
     var img_url = $("#imgLink").val();
-    $("#uploadedPic").attr("src", img_url).show();
+    if(img_url !== ""){
+        $("#img").attr("src", img_url).show();
+    }
+
     //description
     var description = $("#description").val();
     $("#showDescription").text(description);
@@ -87,7 +90,7 @@ $(document).ready(function(){
     }
   });
 
-}); // end of the ready function
+}); // end of the document ready function
 
 
 
