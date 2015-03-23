@@ -1,14 +1,5 @@
 $(document).ready(function(){
 
-  //color picker
-  var dropdownMenu = $("#dropdownMenu");
-  var color;
-  var allShowArearValue;
-  $("#colorChoosen li a").on("click", function(){
-    color = $(this).text();
-    dropdownMenu.text(color);
-  });
-
   var price;
   var qty;
   $("#add").on("click", function(event){
@@ -17,6 +8,11 @@ $(document).ready(function(){
     if(!$("#myForm").valid()){
       return;
     }
+
+      //text color
+    var colorchosed = $('#colorChoosen').val();
+    changeColor(colorchosed);
+
 
     $("#showArea").slideDown();
     $("#FinalTotalPrice").slideDown();
@@ -35,40 +31,44 @@ $(document).ready(function(){
 
     //price
     price = $("#price").val();
-    if(isNaN(price)){
-      confirm("Please enter a valid number.");
-      $("#showPrice").html(null);
-    }
-    else{
-      $("#showPrice").html("$" + price);
-    }
+    $("#showPrice").html("$" + price);
+
 
     //quantity
     qty = $("#qty").val();
-    if(isNaN(qty)){
-      confirm("Please enter a valid number.");
-      $("#showQty").text(null);
-    }
-    else{
-      $("#showQty").text(qty);
-    }
+    $("#showQty").text(qty);
+
 
     //show total price
     var total = price * qty;
     $("#totalPrice").html("$" + total);
 
-  });
+    //clear select option fields
+    $('#colorChoosen option').prop('selected', function() {
+        return this.defaultSelected;
+    });
 
-  //delete
-  $("#close").on("click", function(){
-    $("#showArea").remove();
 
+  }); //end of the add on click
+
+   //clear the input fields
+   $("#myForm").on("click", "#add", function(){
+    $(this).closest("form").find("label, input,textarea").val("");
   });
 
   //form validate
-  $("#myForm").validate();
+  $("#myForm").validate({
+    rules:{
+      price:{
+        number: true
+      },
+      qty:{
+        number:true
+      }
+    }
+  });
 
-});
+}); // end of the ready function
 
 function changeColor(color){
 
@@ -81,7 +81,7 @@ function changeColor(color){
   else if(color == "Pink color"){
     $("#showArea label").css("color","pink");
   }
-  else if(color == "Black color"){
+  else if(color == "Default"){
     $("#showArea label").css("color","black");
   }
 };

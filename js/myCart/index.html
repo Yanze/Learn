@@ -36,30 +36,26 @@
 
         <div class="form-group">
           <label for="description" class="control-label">Description:</label>
-          <textarea id="description" name = "description" type="text" placeholder="Description" class="form-control" ></textarea>
+          <textarea id="description" name = "description" type="text" placeholder="Description" class="form-control" required></textarea>
         </div>
 
         <div class="form-group dropdown">
-          <button class="btn btn-default dropdown-toggle" type="submit" id="dropdownMenu" data-toggle="dropdown" aria-expanded="true">
-            Choose text color
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" id="colorChoosen">
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Red color</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Orange color</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Pink color</a></li>
-            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Black color</a></li>
-          </ul>
+            <select id="colorChoosen">
+                <option>Default</option>
+                <option>Red color</option>
+                <option>Orange color</option>
+                <option>Pink color</option>
+            </select>
         </div>
 
         <div class="form-group">
           <label for="price"  class="control-label">Price:</label>
-          <input id="price" name="price" class="form-control"/>
+          <input id="price" type="number" name="price" class="form-control" required>
         </div>
 
         <div class="form-group">
           <label for="qty"  class="control-label">Qty:</label>
-          <input id="qty" placeholder="Qty" class="form-control" name="qty">
+          <input id="qty" type="number" placeholder="Qty" class="form-control" name="qty" required>
         </div>
         <button id= "add" class="btn btn-default" type="submit">Add</button>
     </div>
