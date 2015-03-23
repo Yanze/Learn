@@ -41,7 +41,7 @@ $(document).ready(function(){
     //upload image
     var img_url = $("#imgLink").val();
     if(img_url !== ""){
-        $("#img").attr("src", img_url).show();
+      $("#img").attr("src", img_url).show();
     }
 
     //description
@@ -89,8 +89,9 @@ $(document).ready(function(){
       }
     }
   });
-
 }); // end of the document ready function
+
+
 
 
 
