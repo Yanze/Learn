@@ -1,24 +1,22 @@
-#inputArea{
-  margin-right: 10px;
-  padding: 5px;
+
+.wrapper, #inputArea{
+  margin: 10px 20px 0 20px;
+  padding: 15px;
+
 }
 #img{
-  width:240px;
-  height: 240px;
+  width:140px;
+  height: 140px;
 
 }
 #showArea{
   border: 2px solid #afafaf;
-  padding: 10px;
-  margin-top: 5px;
+  padding-top: 20px;
 }
-.total label{
-  font-size: 20px;
 
-}
-/*#FinalTotalPrice{
+#FinalTotalPrice{
   display: none;
-}*/
+}
 
 #logo{
  width:100px;
@@ -27,4 +25,8 @@
 }
 .error{
   color: red;
+}
+#add{
+  margin-left: 20px;
+  margin-bottom: 20px;
 }

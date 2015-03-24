@@ -6,20 +6,26 @@ var input = {
   color:"",
   qty:"0",
   total:"0",
-  changeColor: function(color){
-    if(color == "Red color"){
-      $("#showArea label").css("color","red");
+  finalTotal:"",
+  changeColor: function(){
+    if(this.color == "Red color"){
+      $("#form label").css("color","red");
     }
-    else if(color == "Orange color"){
-      $("#showArea label").css("color","orange");
+    else if(this.color == "Orange color"){
+      $("#form label").css("color","orange");
     }
-    else if(color == "Pink color"){
-      $("#showArea label").css("color","pink");
+    else if(this.color == "Pink color"){
+      $("#form label").css("color","pink");
     }
-    else if(color == "Default"){
-      $("#showArea label").css("color","black");
+    else if(this.color == "Default"){
+      $("#form label").css("color","black");
     }
-  }//end of the function change color
+  },//end of the function change color
+   //add dynamically div
+  addDiv: function(){
+   var zone = $("#showZone");
+   zone.append("<div id='showArea' class='container col-lg-8'><div class='col-lg-4'><img id='img' src='"+ this.img_url +"'></div><form id='form'><div class='form-group'><label for='name'>Name:</label><label id= 'showName'>"+ this.name +"</label></div><div class='form-group'><label>Description:</label><label id= 'showName'>"+ this.description +"</label></div><div class='form-group'><label>Price:</label><label id= 'showPrice'>"+ this.price +"<label></div><div class='form-group'><label>Qty:</label><label id='showQty'>"+ this.qty +"</label></div><div class='form-group total'><label>Total price:</label><label id='totalPrice'>"+ this.total +"</label></div><form></div>");
+ }// end of the function add div
 }; // end of object input
 
 
@@ -40,7 +46,7 @@ $(document).ready(function(){
     //upload image
     input.img_url = $("#imgLink").val();
     if(input.img_url == ""){
-        input.img_url = "https://s-media-cache-ak0.pinimg.com/236x/d0/c3/8b/d0c38b6db20fbbe5dd8a1b757a17133b.jpg";
+      input.img_url = "https://s-media-cache-ak0.pinimg.com/236x/d0/c3/8b/d0c38b6db20fbbe5dd8a1b757a17133b.jpg";
     }
 
     //description
@@ -48,10 +54,8 @@ $(document).ready(function(){
 
     //text color
     input.color = $('#colorChoosen').val();
-    input.changeColor(input.color);
+    input.changeColor();
 
-    var changeTextColor = $("#dropdownMenu").text();
-    var colorResult = input.changeColor(changeTextColor);
 
     //price
     input.price = $("#price").val();
@@ -62,12 +66,16 @@ $(document).ready(function(){
     //show total price
     input.total = input.price * input.qty;
 
+    //final total price
+    input.finalTotal += Number(input.total);
+    $("#FinalTotalPrice").text(input.finalTotal);
+
 
     //clear select option fields
     $('#colorChoosen option').prop('selected', function() {
       return this.defaultSelected;
     });
-    addDiv(input);
+    input.addDiv();
 
   }); //end of the add on click
 
@@ -84,16 +92,10 @@ $(document).ready(function(){
       },
       qty:{
         number:true
-      }
+      },
     }
   });
 
-
-  //add dynamically div
-  function addDiv(monObj){
-    var zone = $("#showZone");
-    zone.append("<div id='showArea' class='container col-lg-8'><div class='col-lg-4'><img id='img' src='"+ input.img_url +"'></div><form class='form-horizonta'><div class='form-group'><label for='name'>Name:</label><label id= 'showName'>"+ input.name +"</label></div><div class='form-group'><label>Description:</label><label id= 'showName'>"+ input.description +"</label></div><div class='form-group'><label>Price:</label><label id= 'showPrice'>"+ input.price +"<label></div><div class='form-group'><label>Qty:</label><label id='showQty'>"+ input.qty +"</label></div><div class='form-group total'><label>Total price:</label><label id='totalPrice'>"+ input.total +"</label></div><form></div>");
-  }
 
 }); // end of the document ready function
 
