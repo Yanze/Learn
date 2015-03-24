@@ -12,9 +12,10 @@
 #showArea{
   border: 2px solid #afafaf;
   padding-top: 20px;
+  margin-top: 5px;
 }
 
-#FinalTotalPrice{
+#FinalPrice{
   display: none;
 }
 

@@ -1,26 +1,11 @@
 var input = {
   name:"",
   img_url:"",
-  price:"0",
+  price:0,
   description:"",
-  color:"",
-  qty:"0",
-  total:"0",
-  finalTotal:"",
-  changeColor: function(){
-    if(this.color == "Red color"){
-      $("#form label").css("color","red");
-    }
-    else if(this.color == "Orange color"){
-      $("#form label").css("color","orange");
-    }
-    else if(this.color == "Pink color"){
-      $("#form label").css("color","pink");
-    }
-    else if(this.color == "Default"){
-      $("#form label").css("color","black");
-    }
-  },//end of the function change color
+  qty:0,
+  total:0,
+  finalTotal:0,
    //add dynamically div
   addDiv: function(){
    var zone = $("#showZone");
@@ -39,7 +24,7 @@ $(document).ready(function(){
     }
 
     $("#showZone").slideDown();
-    $("#FinalTotalPrice").slideDown();
+    $("#FinalPrice").slideDown();
     //show name
     input.name = $("#name").val();
 
@@ -53,8 +38,8 @@ $(document).ready(function(){
     input.description = $("#description").val();
 
     //text color
-    input.color = $('#colorChoosen').val();
-    input.changeColor();
+    var color = $('#colorChoosen').val();
+    changeColor(color);
 
 
     //price
@@ -67,14 +52,15 @@ $(document).ready(function(){
     input.total = input.price * input.qty;
 
     //final total price
-    input.finalTotal += Number(input.total);
-    $("#FinalTotalPrice").text(input.finalTotal);
-
+    input.finalTotal += input.total;
+    $("#FinalTotalPrice").html("<labe>"+ input.finalTotal +"</label>");
 
     //clear select option fields
     $('#colorChoosen option').prop('selected', function() {
       return this.defaultSelected;
     });
+
+    //function add div
     input.addDiv();
 
   }); //end of the add on click
@@ -92,13 +78,26 @@ $(document).ready(function(){
       },
       qty:{
         number:true
-      },
+      }
     }
   });
 
 
 }); // end of the document ready function
-
+  function changeColor(color){
+    if(color == "Red color"){
+      $("#form label").css("color","red");
+    }
+    else if(color == "Orange color"){
+      $("#form label").css("color","orange");
+    }
+    else if(color == "Pink color"){
+      $("#form label").css("color","pink");
+    }
+    else if(color == "Default"){
+      $("#form label").css("color","black");
+    }
+  };//end of the function change color
 
 
 
