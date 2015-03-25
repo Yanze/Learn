@@ -7,7 +7,9 @@
 #img{
   width:140px;
   height: 140px;
-
+  float: left;
+  padding-bottom: 15px;
+  padding-right: 20px;
 }
 #showArea{
   border: 2px solid #afafaf;
@@ -17,6 +19,7 @@
 
 #FinalPrice{
   display: none;
+  font-size: 30px;
 }
 
 #logo{
