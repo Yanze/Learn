@@ -9,7 +9,7 @@ var input = {
    //add dynamically div
    addDiv: function(divId, color){
      var zone = $(divId);
-     zone.append("<div style='color:"+ color +";' id='showArea' class='newDiv container col-lg-8'><a class='close'>&times;</a><img id='img' src='"+ this.img_url +"'><label for='name'>Name:</label><label id= 'showName'>"+ this.name +"</label><br><label>Description:</label><label id= 'showName'>"+ this.description +"</label><br><label>Price:</label><label id= 'showPrice'>"+ this.price +"</label><br><label>Qty:</label><label id='showQty'>"+ this.qty +"</label><br><label>Total price:</label><label id='totalPrice'>"+ this.total +"</label></div>");
+     zone.append("<div style='color:"+ color +";' id='showArea' class='newDiv container col-lg-8'><a class='close'>&times;</a><img id='img' src='"+ this.img_url +"'><label for='name'>Name:</label><label id= 'showName'>"+ this.name +"</label><br><label>Description:</label><label>"+ this.description +"</label><br><label>Price:</label><label>"+ this.price +"</label><br><label>Qty:</label><label>"+ this.qty +"</label><br><label>Total price:</label><label id='totalPrice'>"+ this.total +"</label></div>");
  }// end of the function add div
 }; // end of object input
 
