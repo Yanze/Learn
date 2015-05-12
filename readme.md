@@ -1,4 +1,4 @@
 Learn
 =====
 
-- JavaScript exercises
+- JavaScript exercises & javascript-koans-master & codewars
