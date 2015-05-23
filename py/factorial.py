@@ -11,6 +11,6 @@ def factorial2(n):
   while n >= 1:
     num = num * n
     n = n - 1
-    return num
+  return num
 
 print factorial(5)
