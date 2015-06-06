@@ -1,0 +1,9 @@
+1|Fish|15
+2|Beef|12
+3|Pork|10
+4|Rice|1
+5|noodles|7
+6|ludo|0.1
+7|lulu|5
+8|mango|2
+9|cake|10
