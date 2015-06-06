@@ -24,3 +24,17 @@ shell.log('New restaurant created{}'.format(restau))
 restau.load_menu()
 shell.log('Menu loaded (total dishes: {})'.format(len(restau.menu.dishes)))
 
+user_answer = shell.show_main_menu()
+while user_answer != '3':
+  if user_answer == '1':
+    shell.show_dishes(restau.menu.dishes)
+
+
+  elif user_answer == '2':
+    restau.load_menu()
+    shell.show_dishes(restau.menu.dishes)
+
+  user_answer = shell.show_main_menu()
+
+
+
