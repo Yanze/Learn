@@ -43,6 +43,5 @@ class Shell():
                                                     dish.name,
                                                     dish.price))
 
-
   def log(self, msg):
     print('** '+ msg)

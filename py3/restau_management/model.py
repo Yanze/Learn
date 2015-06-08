@@ -1,8 +1,11 @@
+from math import ceil
+
 class Restaurant():
 
   menu_file_default = 'menu.txt'
   name_length_max = 200
   table_number_max = 500
+  persons_per_table_max = 10
 
   def __init__(self, name, table_nb):
     self.validate_inputs(name, table_nb)
@@ -10,6 +13,14 @@ class Restaurant():
     self.name = name
     self.table_nb = table_nb
     self.menu = None
+    self.free_tables = []
+    self.customer_groups = []
+
+    self.init_free_tables(table_nb)
+
+  def init_free_tables(self, number):
+    for i in range(1, number):
+      self.free_tables.append(Table(i))
 
   def __str__(self):
     return '<name:{} table_nb:{}>'.format(self.name,self.table_nb)
@@ -34,6 +45,15 @@ class Restaurant():
       dishes.append(dish)
     self.menu = Menu(dishes)
 
+  def get_table_nb(self, customer_number):
+    return ceil(customer_number / self.persons_per_table_max)
+
+  def get_free_tables(self,table_number):
+    if table_number > len(self.free_tables):
+      return None
+    need_tables = self.free_tables[:table_number]
+    self.free_tables = self.free_tables[table_number:]
+    return need_tables
 
 class Dish():
   def __init__(self,number,name,price):
@@ -50,3 +70,13 @@ class Menu():
 
   def __str__(self):
     return '<Menu dish:{}>'.format(self.dish)
+
+class Table():
+  def __init__(self, number):
+    self.number = number
+
+class CustomerGroup():
+  def __init__(self, number, tables):
+    self.number = number
+    self.tables = tables
+
