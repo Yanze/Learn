@@ -1,5 +1,6 @@
 from model import Restaurant
 
+
 class Shell():
   def welcome(self):
     print('')
@@ -30,9 +31,10 @@ class Shell():
     print('1. Show Dishes')
     print('2. Reload & Show Dishes')
     print('3. Assign New Table')
-    print('4. Show Customer Groups')
-    print('5. Release Table')
-    print('6. Quit Application')
+    print('4. Order Dishes')
+    print('5. Show Customer Groups & Orders & Price')
+    print('6. Release Table & Bill')
+    print('7. Quit Application')
     print('')
     return input('selection:')
 
@@ -68,14 +70,24 @@ class Shell():
 
     for group in groups:
 
-      tables_nb = ""
+      tables_nb = ''
       for table in group.tables:
         tables_nb += str(table.number) + ','
       tables_nb = tables_nb[:-1]
-      print('Group {} at {} tables, {} customers.'
-            .format(group.id,
-                    tables_nb,
-                    group.number))
+
+      dishes_nb= ''
+      for dish in group.dishes:
+        dishes_nb += str(dish.number) + ','
+      dishes_nb = dishes_nb[:-1]
+
+      if dishes_nb == '':
+          dishes_nb = 'None'
+
+      print('Group {} at {} tables, {} customers, dishes number {} ordered, price is ${}.'.format(group.id,
+                      tables_nb,
+                      group.number,
+                      dishes_nb,
+                      group.total_price))
 
   def release_table(self, restau):
     leaving_customer_group = input('Please enter leaving group id:')
@@ -88,12 +100,37 @@ class Shell():
 
     if group_leaving is None:
       print("No Group {} found".format(leaving_customer_group))
-    else:
-      restau.customer_group_leave(group_leaving)
-      tables_nb = ""
-      for table in group_leaving.tables:
-        tables_nb += str(table.number) + ','
-      tables_nb = tables_nb[:-1]
-      print('Tables {} are released'.format(tables_nb))
+      return
 
+    restau.customer_group_leave(group_leaving)
+    tables_nb = ""
+    for table in group_leaving.tables:
+      tables_nb += str(table.number) + ','
+    tables_nb = tables_nb[:-1]
+
+    print('Tables {} are released'.format(tables_nb))
+    print('Total price is ${} '.format(group_leaving.total_price))
+
+  def order_dishes(self, restau):
+    id = input('Please enter group id: ')
+    group_ordering = None
+    for group in restau.customer_groups:
+      if group.id == int(id):
+        group_ordering = group
+        break
+    if group_ordering is None:
+      print('No group found by this id.')
+      return
+
+    dish_nb = input('Please enter Dish Number: ')
+    dishes_ordered = []
+    for dish in restau.menu.dishes:
+      if dish.number == dish_nb:
+        dishes_ordered.append(dish)
+        break
+    if dishes_ordered == []:
+      print('No dish found.')
+      return
+
+    group_ordering.order_dishes(dishes_ordered)
 

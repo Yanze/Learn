@@ -27,7 +27,7 @@ shell.log('Menu loaded (total dishes: {})'
           .format(len(restau.menu.dishes)))
 
 user_answer = shell.show_main_menu()
-while user_answer != '6':
+while user_answer != '7':
 
   if user_answer == '1':
     shell.show_dishes(restau.menu.dishes)
@@ -37,8 +37,10 @@ while user_answer != '6':
   elif user_answer == '3':
     shell.assign_new_table(restau)
   elif user_answer == '4':
-    shell.show_customer_groups(restau.customer_groups)
+    shell.order_dishes(restau)
   elif user_answer == '5':
+    shell.show_customer_groups(restau.customer_groups)
+  elif user_answer == '6':
     shell.release_table(restau)
 
   user_answer = shell.show_main_menu()

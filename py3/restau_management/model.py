@@ -156,6 +156,25 @@ class CustomerGroup():
   def __init__(self, number, tables, id):
     self.number = number
     self.tables = tables
+    self.dishes = []
     self.id = id
+    self.total_price = 0
 
+  def __str__(self):
+    tables_nb = ""
+    for table in self.tables:
+      tables_nb += str(table.number) + ','
+    tables_nb = tables_nb[:-1]
+    return '<Group ID {}, at {} tables, {} customers.>'.format(self.id,
+                                                               tables_nb,
+                                                               self.number)
+  def order_dishes(self, dishes):
+    self.dishes.extend(dishes)
+    self.refresh_total_price()
 
+  def refresh_total_price(self):
+    total_price = 0
+    for dish in self.dishes:
+      total_price += int(dish.price)
+
+    self.total_price = total_price
