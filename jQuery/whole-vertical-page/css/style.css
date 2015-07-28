@@ -1,0 +1,25 @@
+body, html{
+  padding: 0;
+  margin: 0;
+  height: 100%;
+
+}
+
+#container, .section{
+  height: 100%;
+}
+
+#section0{
+  background-image: url("../images/1.jpg");
+}
+#section1{
+  background: gray;
+}
+
+/*#section0{
+  background-image: url("http://www.codeproject.com/KB/GDI-plus/ImageProcessing2/img.jpg");
+  background-repeat: no-repeat;
+  width: 800px;
+  height: 200px;
+    }*/
+
