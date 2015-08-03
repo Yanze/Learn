@@ -9,14 +9,20 @@
 
   <body ng-controller="MainController">
     <h1>{{message}}</h1>
-    
     <div>{{error}}</div>
-    
+
+
+    <form name="searchUser">
+        <input type="search" placeholder="Enter User Name" ng-model="username"/>
+        <input type="submit" value="search" ng-click="search(username)"> <!-- it will be function call -->
+    </form>
+
+
     <div>
-        <div>Name : {{user.name}}</div>
-        <div>location : {{user.location}}</div>
+        <h2>{{username}}</h2>
         <img ng-src = "{{user.avatar_url}}" title="{{user.name}}">
     </div>
+
   </body>
 
 </html>
