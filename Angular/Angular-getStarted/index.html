@@ -1,28 +1,25 @@
 <!DOCTYPE html>
 <html ng-app="githubViewer">
 
-  <head>
+<head>
     <script data-require="angular.js@*" data-semver="1.2.5" src="https://code.angularjs.org/1.2.5/angular.js"></script>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
-  </head>
+</head>
 
-  <body ng-controller="MainController">
+<body ng-controller="MainController">
     <h1>{{message}}</h1>
     <div>{{error}}</div>
 
-
-    <form name="searchUser">
-        <input type="search" placeholder="Enter User Name" ng-model="username"/>
-        <input type="submit" value="search" ng-click="search(username)"> <!-- it will be function call -->
+    Counter: {{countdown}}
+    <form name="searchUser" ng-submit="search(username)">
+        <input type="search" required placeholder="Enter User Name" ng-model="username" />
+        <input type="submit" value="search">
+        <!-- it will be function call -->
     </form>
 
+    <div ng-include="'userdetails.html'" ng-show="user"></div>  <!-- include another html file -->
 
-    <div>
-        <h2>{{username}}</h2>
-        <img ng-src = "{{user.avatar_url}}" title="{{user.name}}">
-    </div>
-
-  </body>
+</body>
 
 </html>
