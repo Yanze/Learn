@@ -1,25 +1,22 @@
 <!DOCTYPE html>
+<!-- main html file-->
+
 <html ng-app="githubViewer">
 
 <head>
-    <script data-require="angular.js@*" data-semver="1.2.5" src="https://code.angularjs.org/1.2.5/angular.js"></script>
-    <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script data-require="angular.js@1.3.0" data-semver="1.3.0" src="https://code.angularjs.org/1.3.0/angular.js"></script>
+    <script data-require="angular-route@1.2.15" data-semver="1.2.15" src="https://code.angularjs.org/1.2.15/angular-route.js"></script>
+
+    <script src="app.js"></script>
+    <script src="MainController.js"></script>
+    <script src="UserController.js"></script>
+    <script src="RepoController.js"></script>
+    <script src="github.js"></script>
 </head>
 
-<body ng-controller="MainController">
-    <h1>{{message}}</h1>
-    <div>{{error}}</div>
-
-    Counter: {{countdown}}
-    <form name="searchUser" ng-submit="search(username)">
-        <input type="search" required placeholder="Enter User Name" ng-model="username" />
-        <input type="submit" value="search">
-        <!-- it will be function call -->
-    </form>
-
-    <div ng-include="'userdetails.html'" ng-show="user"></div>  <!-- include another html file -->
-
+<body>
+    <h1>Github Viewer</h1>
+    <div ng-view=""></div>
 </body>
 
 </html>
